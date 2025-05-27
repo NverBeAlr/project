@@ -31,7 +31,7 @@
             </div>
         </div>
     </header>
-
+    <!-- Nội dung tìm kiếm -->
     <?php
         //Mở kết nối đến DB
         include_once "../admin/Connection/open.php";

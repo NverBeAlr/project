@@ -7,11 +7,11 @@
 </head>
 <body>
     <?php
-        include_once "../../connection/open.php";
+        include_once "../../admin/connection/open.php";
         $sql = "SELECT PAY_ID, NAME FROM payment_methods";
         $result = mysqli_query($connection, $sql);
     ?>
-    <form method="POST" action="checkOut.php">
+    <form method="POST" action="../order/checkOut.php">
         <label for="pay_id">Phương thức thanh toán</label>
         <select name="pay_id" id="pay_id" required>
             <?php 
@@ -26,6 +26,6 @@
         </select>
         <button type="submit">Checkout</button>
     </form>
-    <?php include_once "../../connection/close.php"; ?>
+    <?php include_once "../../admin/connection/close.php"; ?>
 </body>
 </html>
