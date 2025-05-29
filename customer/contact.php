@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -37,9 +36,9 @@
       <h1 class="logo" style="margin-left: 20px;">SalephoneS</h1>
       <nav class="main-nav" style="margin-left: 40px;">
         <ul>
-          <li><a href="menu.php" class="active">Trang chủ</a></li>
+          <li><a href="menu.php" >Trang chủ</a></li>
           <li><a href="productList.php">Sản phẩm</a></li>
-          <li><a href="contact.php">Liên hệ</a></li>
+          <li><a href="contact.php" class="active">Liên hệ</a></li>
         </ul>
       </nav>
 
@@ -72,28 +71,15 @@
     </form>
   </div>
 
-  <!-- Banner Section -->
-  <section class="banner-section">
-    <div class="container">
-      <img src="../admin/image/banner1.png" alt="Banner chính" class="main-banner">
-    </div>
-  </section>
+    <!-- Contact section -->
+    <section class="contact-section">
+        <div class="container">
+            <h1>Trụ sở chính</h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d522.5584594068139!2d106.485939!3d20.40314!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDI0JzEyLjAiTiAxMDbCsDI5JzA5LjYiRQ!5e1!3m2!1svi!2s!4v1748484692330!5m2!1svi!2s" 
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
 
-  <!-- Sản phẩm nổi bật -->
-  <section id="products" class="products">
-    <div class="container">
-      <h2>Sản phẩm nổi bật</h2>
-      <div class="product-grid">
-        <?php foreach ($products as $product) { ?>
-          <a href="product.php?id=<?php echo $product["PRD_ID"]; ?>" class="product">
-            <img src="../admin/image/<?php echo $product['IMAGE']; ?>" alt="Ảnh sản phẩm">
-            <h3><?php echo $product['NAME']; ?></h3>
-            <p class="price"><?php echo number_format($product['PRICE'], 0, ',', '.'); ?> đ</p>
-          </a>
-        <?php } ?>
-      </div>
-    </div>
-  </section>
 
   <div class='float-contact'>
  <div class='chat-zalo'>
@@ -114,7 +100,7 @@
 
   <!-- Footer -->
   <footer class="main-footer">
-    <div class="container">
+    <div class="container map">
       <p>&copy; 2025 SalephoneS | Hotline: 0869 733 436 | <a href="mailto:support@salephones.com" style="color:#ffd600;">support@salephones.com</a></p>
     </div>
   </footer>

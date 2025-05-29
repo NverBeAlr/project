@@ -18,9 +18,11 @@
     foreach ($getAddresses as $getAddress){
         $deliveryLocation = $getAddress['ADDRESS'];
     }
+    // Lấy phương thức thanh toán từ form
+    $payId = $_POST['pay_id']; // Nếu có phương thức thanh toán thì sử dụng dòng này
     //Viết sql lưu bảng orders
-    $sqlSaveOrder = "INSERT INTO orders(ORDER_DATE, ORDER_STATUS, CUS_ID, DELIVERY_LOCATION)
-                     VALUES ('$orderDate', '$orderStatus', '$customerID', '$deliveryLocation')";
+    $sqlSaveOrder = "INSERT INTO orders(ORDER_DATE, ORDER_STATUS, CUS_ID, DELIVERY_LOCATION, PAY_ID)
+                     VALUES ('$orderDate', '$orderStatus', '$customerID', '$deliveryLocation', '$payId')";
     //Chạy sql lưu orders
     mysqli_query($connection, $sqlSaveOrder);
     /*Lấy id của order vừa được tạo */

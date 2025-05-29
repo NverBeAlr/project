@@ -14,6 +14,7 @@
             <th>Tên Khách hàng</th>
             <th>Ngày đặt hàng</th>
             <th>Địa chỉ giao hàng</th>
+            <th>Phương thức thanh toán</th>
             <th>Trạng thái đơn hàng</th>
             <th>Chi tiết đơn hàng</th>
         </tr>
@@ -23,8 +24,10 @@
             //Mở kết nối
             include_once "../../connection/open.php";
             //Viết sql
-            $sql = "SELECT orders.*, customers.NAME FROM orders
+            $sql = "SELECT orders.*, customers.NAME, payment_methods.NAME AS PAYMENT_METHOD
+                    FROM orders
                     INNER JOIN customers ON customers.CUS_ID = orders.CUS_ID
+                    LEFT JOIN payment_methods ON payment_methods.PAY_ID = orders.PAY_ID
                     WHERE orders.CUS_ID = '$customerID'";
             //Chạy sql
             $orders = mysqli_query($connection, $sql);
@@ -43,6 +46,9 @@
                 </td>
                 <td>
                     <?php echo $order['DELIVERY_LOCATION']; ?>
+                </td>
+                <td>
+                    <?php echo $order['PAYMENT_METHOD'] ? htmlspecialchars($order['PAYMENT_METHOD']) : '---'; ?>
                 </td>
                 <td>
                     <?php

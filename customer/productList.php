@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -20,13 +19,19 @@
         $keyword = '';
     }
     // Viết SQL lấy dữ liệu
+    // Lấy tất cả sản phẩm cùng loại
     $sql = "SELECT products.*, brands.NAME AS brand_name, types.NAME AS type_name 
-            FROM products INNER JOIN brands 
-            ON brands.BRAND_ID = products.BRAND_ID INNER JOIN types 
-            ON types.TYPE_ID = products.TYPE_ID
+            FROM products 
+            INNER JOIN brands ON brands.BRAND_ID = products.BRAND_ID 
+            INNER JOIN types ON types.TYPE_ID = products.TYPE_ID
             WHERE products.NAME LIKE '%$keyword%'";
-    // Chạy query
-    $products = mysqli_query($connection, $sql);
+    $result = mysqli_query($connection, $sql);
+
+    // Nhóm sản phẩm theo thương hiệu (brand)
+    $productsByBrand = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $productsByBrand[$row['brand_name']][] = $row;
+    }
     // Đóng kết nối đến DB
     include_once "../admin/Connection/close.php";
   ?>
@@ -37,8 +42,8 @@
       <h1 class="logo" style="margin-left: 20px;">SalephoneS</h1>
       <nav class="main-nav" style="margin-left: 40px;">
         <ul>
-          <li><a href="menu.php" class="active">Trang chủ</a></li>
-          <li><a href="productList.php">Sản phẩm</a></li>
+          <li><a href="menu.php" >Trang chủ</a></li>
+          <li><a href="productList.php" class="active">Sản phẩm</a></li>
           <li><a href="contact.php">Liên hệ</a></li>
         </ul>
       </nav>
@@ -72,26 +77,22 @@
     </form>
   </div>
 
-  <!-- Banner Section -->
-  <section class="banner-section">
-    <div class="container">
-      <img src="../admin/image/banner1.png" alt="Banner chính" class="main-banner">
-    </div>
-  </section>
-
   <!-- Sản phẩm nổi bật -->
   <section id="products" class="products">
     <div class="container">
-      <h2>Sản phẩm nổi bật</h2>
-      <div class="product-grid">
-        <?php foreach ($products as $product) { ?>
-          <a href="product.php?id=<?php echo $product["PRD_ID"]; ?>" class="product">
-            <img src="../admin/image/<?php echo $product['IMAGE']; ?>" alt="Ảnh sản phẩm">
-            <h3><?php echo $product['NAME']; ?></h3>
-            <p class="price"><?php echo number_format($product['PRICE'], 0, ',', '.'); ?> đ</p>
-          </a>
-        <?php } ?>
-      </div>
+      <h2>Các sản phẩm</h2>
+      <?php foreach ($productsByBrand as $brandName => $products) { ?>
+        <h3 style="margin-top:30px; color:#333;"><?php echo htmlspecialchars($brandName); ?></h3>
+        <div class="product-grid">
+          <?php foreach ($products as $product) { ?>
+            <a href="product.php?id=<?php echo $product["PRD_ID"]; ?>" class="product">
+              <img src="../admin/image/<?php echo $product['IMAGE']; ?>" alt="Ảnh sản phẩm">
+              <h3><?php echo $product['NAME']; ?></h3>
+              <p class="price"><?php echo number_format($product['PRICE'], 0, ',', '.'); ?> đ</p>
+            </a>
+          <?php } ?>
+        </div>
+      <?php } ?>
     </div>
   </section>
 
