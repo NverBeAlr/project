@@ -3,7 +3,7 @@
     //Lấy giỏ hàng
     $carts = $_SESSION['cart'];
     //Mở kết nốt
-    include_once "../../connection/open.php";
+    include_once "../connection/open.php";
     //Lấy ngày đặt hàng là ngày hôm nay
     $orderDate = date("Y-m-d");
     //order status mặc định 0 là đang chờ xử lý, 1 đã sử lý, 2 là đang giao hàng, 3 là đã giao hàng, 4 hủy hàng
@@ -18,14 +18,12 @@
     foreach ($getAddresses as $getAddress){
         $deliveryLocation = $getAddress['ADDRESS'];
     }
-    // Lấy phương thức thanh toán từ form
-    $payId = $_POST['pay_id']; // Nếu có phương thức thanh toán thì sử dụng dòng này
     //Viết sql lưu bảng orders
-    $sqlSaveOrder = "INSERT INTO orders(ORDER_DATE, ORDER_STATUS, CUS_ID, DELIVERY_LOCATION, PAY_ID)
-                     VALUES ('$orderDate', '$orderStatus', '$customerID', '$deliveryLocation', '$payId')";
+    $sqlSaveOrder = "INSERT INTO orders(ORDER_DATE, ORDER_STATUS, CUS_ID, DELIVERY_LOCATION)
+                     VALUES ('$orderDate', '$orderStatus', '$customerID', '$deliveryLocation')";
     //Chạy sql lưu orders
     mysqli_query($connection, $sqlSaveOrder);
-    /*Lấy id của order vừa được tạo */
+    /* Lấy id của order vừa được tạo */
     //Viết sql
     $sqlGetOrderIds = "SELECT MAX(ORDER_ID) AS ORDER_ID FROM orders WHERE CUS_ID = '$customerID'";
     //Chạy sql
@@ -51,7 +49,7 @@
         mysqli_query($connection, $sqlSaveOrderDetails);
     }
     //Đóng kết nối
-    include_once "../../connection/close.php";
+    include_once "../connection/close.php";
     //Xóa giỏ hàng
     unset($_SESSION['cart']);
     //QUay về trang danh sách đơn hàng

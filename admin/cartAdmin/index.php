@@ -98,8 +98,9 @@
                                         <button type="submit" name="update" class="btn btn-primary">
                                             <span class="glyphicon glyphicon-refresh"></span> Cập nhật giỏ hàng
                                         </button>
-                                        <a href="orders/checkOut.php" class="btn btn-success">
+                                        <a href="order/checkOut.php" class="btn btn-success">
                                             Đặt hàng <span class="glyphicon glyphicon-ok"></span>
+                                        </a>
                                         </a>
                                     </div>
                                 </td>

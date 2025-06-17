@@ -7,13 +7,14 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/project/admin/brands/index.php" class="nav-link px-2 text-white">Nhãn hàng</a></li>
-          <li><a href="/project/admin/types/index.php" class="nav-link px-2 text-white">Kiểu máy</a></li>
-          <li><a href="/project/admin/payment methods/index.php" class="nav-link px-2 text-white">Phương thức thanh toán</a></li>
-          <li><a href="/project/admin/products/index.php" class="nav-link px-2 text-white">Sản phẩm</a></li>
-          <li><a href="/project/admin/customers/index.php" class="nav-link px-2 text-white">Khách hàng</a></li>
-          <li><a href="/project/admin/admins/index.php" class="nav-link px-2 text-white">admin</a></li>
-          <li><a href="/project/admin/cartAdmin/index.php" class="nav-link px-2 text-white">Giỏ hàng</a></li>
+          <li><a href="/php/project/admin/brands/index.php" class="nav-link px-2 text-white">Nhãn hàng</a></li>
+          <li><a href="/php/project/admin/types/index.php" class="nav-link px-2 text-white">Kiểu máy</a></li>
+          <li><a href="/php/project/admin/payment methods/index.php" class="nav-link px-2 text-white">Phương thức thanh toán</a></li>
+          <li><a href="/php/project/admin/products/index.php" class="nav-link px-2 text-white">Sản phẩm</a></li>
+          <li><a href="/php/project/admin/customers/index.php" class="nav-link px-2 text-white">Khách hàng</a></li>
+          <li><a href="/php/project/admin/admins/index.php" class="nav-link px-2 text-white">admin</a></li>
+          <li><a href="/php/project/admin/cartAdmin/index.php" class="nav-link px-2 text-white">Giỏ hàng</a></li>
+          <li><a href="/php/project/admin/cartAdmin/order/orderList.php" class="nav-link px-2 text-white">Đơn hàng</a></li>
         </ul>
 
         <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -21,7 +22,7 @@
         </form> -->
 
         <div class="text-end">
-          <a href="/project/admin/login/logout.php" class="btn btn-warning text-white">Đăng xuất</a></div>
+          <a href="/php/project/admin/login/logout.php" class="btn btn-warning text-white">Đăng xuất</a></div>
       </div>
     </div>
   </header>
